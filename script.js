@@ -6,9 +6,14 @@
 let number_cards;
 let i;
 
-let card_options = ["bobrossparrot","explodyparrot","fiestaparrot","metalparrot","revertitparrot","tripletsparrot","unicornparrot"];
+let card_options = ["bobrossparrot", "explodyparrot", "fiestaparrot", "metalparrot", "revertitparrot", "tripletsparrot", "unicornparrot"];
 let card_game = [];
 
+let firstcard;
+let secondcard;
+
+let moves = 0;
+let points = 0;
 
 /*========================
     AUXILIAR FUNCTIONS
@@ -35,6 +40,21 @@ function game_deck() {
 
 function deck_shuffle() {
     return Math.random() - 0.5;
+}
+
+function reset_cards() {
+
+    firstcard = undefined;
+    secondcard = undefined;
+
+}
+
+function reset_cards2() {
+
+    firstcard.classList.remove("turned");
+    secondcard.classList.remove("turned");
+    reset_cards();
+
 }
 
 
@@ -66,21 +86,41 @@ function game_spread() {
 
     for (i = 0; i < number_cards; i++) {
 
-        let card = `<div class="card" onclick"turn()">
-
-        <div class="front-face" data-identifier="front-face">
-            <img src="files/front.png" />
-            </div>
-            <div class="back-face" data-identifier="back-face">
-            <img src='files/${card_game[i]}.gif'>
-            </div>
-
+        let card = `<div class="card" onclick="turn(this);">
+        <div class="front-face face" data-identifier="front-face"><img src="files/front.png" /></div>
+        <div class="back-face face" data-identifier="back-face"><img src='files/${card_game[i]}.gif'></div>
         </div>`;
 
         game_box.innerHTML = game_box.innerHTML + card;
+    }
+}
 
+function turn(choice) {
+
+    moves = moves + 1;
+
+    if (secondcard === undefined && choice.classList.contains("turned")){
+        return;
     }
 
+    choice.classList.add("turned");
 
+    if (firstcard === undefined) {
+        firstcard = choice;
+    }
+    else {
+        secondcard = choice;
+    }
+
+    let parameter1 = firstcard.innerHTML;
+    let parameter2 = secondcard.innerHTML;
+
+    if (parameter1 === parameter2) {
+        points = points + 2;
+        reset_cards();
+    }
+    else {
+        reset_cards2();
+    }
 
 }
