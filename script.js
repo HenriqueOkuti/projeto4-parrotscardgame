@@ -97,12 +97,12 @@ function game_spread() {
 
 function turn(choice) {
 
-    moves = moves + 1;
-
-    if (secondcard === undefined && choice.classList.contains("turned")){
+    /* Makes it not able to click on the same card */
+    if (secondcard === undefined && choice.classList.contains("turned")) {
         return;
     }
 
+    moves = moves + 1;
     choice.classList.add("turned");
 
     if (firstcard === undefined) {
@@ -112,15 +112,17 @@ function turn(choice) {
         secondcard = choice;
     }
 
-    let parameter1 = firstcard.innerHTML;
-    let parameter2 = secondcard.innerHTML;
-
-    if (parameter1 === parameter2) {
-        points = points + 2;
-        reset_cards();
-    }
-    else {
-        reset_cards2();
+    if (firstcard !== undefined && secondcard !== undefined) {
+        if (firstcard.innerHTML === secondcard.innerHTML) {
+            points = points + 2;
+            reset_cards();
+            if (points == number_cards){
+                alert(`Você ganhou em ${moves} jogadas!`);
+            }
+        }
+        else {
+            setTimeout(reset_cards2, 1000);
+        }
     }
 
 }
