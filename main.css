@@ -29,18 +29,7 @@
 
     }
 
-    .game_box {
 
-        display: flex;
-
-        align-items: center;
-        justify-content: center;
-
-        flex-direction: column;
-
-        margin: 47px 0 0 0;
-
-    }
 
 }
 
@@ -69,14 +58,6 @@
 
     }
 
-    .game_box {
-
-        display: flex;
-        justify-content: space-around;
-
-        margin: 47px 0 0 0;
-
-    }
 
 }
 
@@ -97,17 +78,49 @@ body {
 
 }
 
-.card {
+.game_box {
 
+    width: 60%;
+    margin: 47px auto;
     display: flex;
-    justify-content: center;
-    align-items: center;
 
+    justify-content: space-around;
+
+    flex-wrap: wrap;
+
+    perspective: 1000px;
+
+}
+
+.card {
 
     width: 117px;
     height: 146px;
 
+    border-radius: 5px;
+    background-color: #99CEA8;
+
+    margin: 0 0 34px 0;
+
+    position: relative;
+    
 }
+
+.face {
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    position: absolute;
+    backface-visibility: hidden;
+    transition: all 0.5s;
+    transform-style: preserve-3d;
+
+} 
 
 img {
 
@@ -117,3 +130,22 @@ img {
     object-fit: fill;
 
 }
+
+.back-face {
+
+    transform: rotateY(180deg);
+
+}
+
+.turned .back-face {
+
+   transform: rotateY(0deg);   
+
+}
+
+.turned .front-face {
+
+    transform: rotateY(-180deg);   
+ 
+ }
+
