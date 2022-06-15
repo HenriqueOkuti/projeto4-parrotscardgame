@@ -26,15 +26,19 @@ function start_prompt() {
 
     number_cards = parseInt(prompt("Com quantas cartas você deseja jogar?"));
 
-    while (isNaN(number_cards) || number_cards < 4 || number_cards > 14) {
+    while (isNaN(number_cards) || number_cards < 4 || number_cards > 14 || (number_cards % 2 != 0)) {
 
         number_cards = parseInt(prompt("Com quantas cartas você deseja jogar?"));
-        console.log(`Number of cards: ${number_cards}`);
-
     }
+
+    /* Number of cards that'll be played */
+    console.log(`Number of cards: ${number_cards}`);
+
+    game_deck();
 
 }
 
+/* Generates the game deck that'll be played */
 function game_deck() {
 
     for (i = 0; i < (number_cards / 2); i++) {
@@ -45,5 +49,8 @@ function game_deck() {
         }
 
     }
+
+    /* Game deck without shuffling */
+    console.log(card_game);
 
 }
