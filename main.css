@@ -22,14 +22,14 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-wrap: wrap;
 
         font-size: 36px;
+        text-align: center;
 
-        margin: 40px 0;
+        margin: 40px 10% 0 10%;
 
     }
-
-
 
 }
 
@@ -45,10 +45,12 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-wrap: wrap;
 
+        text-align: center;
         font-size: 56px;
     
-        margin: 40px 0;
+        margin: 40px 0 0 0;
 
     }
 
@@ -98,12 +100,13 @@ body {
     height: 146px;
 
     border-radius: 5px;
-    background-color: #99CEA8;
 
     margin: 0 0 34px 0;
 
     position: relative;
-    
+
+    background-color: #EEF9BF;
+
 }
 
 .face {
@@ -119,6 +122,8 @@ body {
     backface-visibility: hidden;
     transition: all 0.5s;
     transform-style: preserve-3d;
+    
+    background-color: #99CEA8;
 
 } 
 
