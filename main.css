@@ -152,5 +152,8 @@ img {
 
     transform: rotateY(-180deg);   
  
- }
+}
 
+ .no-events{
+    pointer-events: none;
+}

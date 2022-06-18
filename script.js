@@ -47,12 +47,18 @@ function reset_cards() {
     firstcard = undefined;
     secondcard = undefined;
 
+    const cards = document.querySelectorAll(".card");
+    for (const card of cards) {
+        card.classList.remove("no-events");
+    }
+    
 }
 
 function reset_cards2() {
 
     firstcard.classList.remove("turned");
     secondcard.classList.remove("turned");
+
     reset_cards();
 
 }
@@ -110,6 +116,11 @@ function turn(choice) {
     }
     else {
         secondcard = choice;
+        const cards = document.querySelectorAll(".card");
+        for (const card of cards) {
+            card.classList.add("no-events");
+        }
+
     }
 
     if (firstcard !== undefined && secondcard !== undefined) {
